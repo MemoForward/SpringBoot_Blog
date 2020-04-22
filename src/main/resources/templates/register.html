@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>博客管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/blog.css" th:href="@{/css/blog.css}" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+<body>
+
+<!-- 正文内容 -->
+<br>
+<br>
+<br>
+<br>
+<div class="m-container-small m-padded-tb-massive" style="max-width: 30em !important;">
+    <div class="ui container">
+        <div class="m-opa ui middle aligned center aligned grid">
+            <div class="column">
+                <h2 class="ui teal image header">
+                    <!--                    <img src="assets/images/logo.png" class="image">-->
+                    <div class="content">
+                        注 册
+                    </div>
+                </h2>
+
+                <form class="ui large form" method="post" th:action="@{/user/register}">
+                    <div class="ui stacked segment">
+                        <div class="field" th:classappend="${error} ? 'error'">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="username" th:value="${username}" placeholder="用户名">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="star icon"></i>
+                                <input type="text" name="nickname" th:value="${nickname}" placeholder="请输入昵称，默认为用户名">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" name="password" th:value="${password}" placeholder="至少输入6位密码">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" name="check_password" th:value="${check_password}" placeholder="确认密码">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="envelope icon"></i>
+                                <input type="text" name="email" th:value="${email}" placeholder="请输入邮箱">
+                            </div>
+                        </div>
+
+                        <!-- TODO:上传头像 -->
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="file image icon"></i>
+                                <input type="text" name="avatar"
+                                       placeholder="上传没做，默认为右侧头像，可填写图片链接">
+                                <i class="middle aligned">
+                                    <img src="../static/images/tra_avatar.jpg"
+                                         th:src="@{/images/tra_avatar.jpg}"
+                                         class="ui middle aligned avatar image" style="margin-top: 5px">
+                                </i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui mini error message"></div>
+                    <div th:unless="${error} == null" class="ui mini negative message" th:text="${error}"></div>
+                    <div class="ui fluid large teal submit button">Register</div>
+                </form>
+
+                <div class="ui message">
+                    还没有注册? <a href="#" th:href="@{/user/register}">注 册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end 正文内容 -->
+
+<script>
+    $(".ui.form").form({
+        fields: {
+            name: {
+                identifier: 'username',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '用户名不能为空'
+                    }
+                ]
+            },
+            password: {
+                identifier: 'password',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '请输入密码'
+                    },
+                    {
+                        type: 'minLength[6]',
+                        prompt: '最少输入6位密码'
+                    }
+                ]
+            },
+            check_password: {
+                identifier: 'check_password',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '请确认密码'
+                    },
+                    {
+                        type: 'match[password]',
+                        prompt: '两次密码输入不一致'
+                    }
+                ]
+            },
+            email: {
+                identifier: 'email',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '请输入邮箱'
+                    },
+                    {
+                        type: "email",
+                        prompt: '邮箱地址不合法'
+                    }
+                ]
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+ALTER TABLE `t_blog_tags` CHANGE `user_id` `blog_id` bigint not null;

@@ -1,0 +1,218 @@
+
+body {
+    background-image: url("/images/bg.jpg") !important;
+    /*color : rgba(0, 0, 0, 0.87) !important;*/
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    -webkit-background-size: cover !important;
+    -o-background-size: cover !important;
+    background-position: center 0 !important;
+}
+
+/*-- 特效 --*/
+.m-rotate-90{
+    transform:rotate(90deg);
+    -ms-transform:rotate(90deg); /* Internet Explorer */
+    -moz-transform:rotate(90deg); /* Firefox */
+    -webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+    -o-transform:rotate(90deg); /* Opera */
+}
+
+.m-opa div {
+    opacity: 0.97 !important;
+}
+
+/*-----------container-------------*/
+.m-container {
+    max-width: 76em !important;
+    margin: auto !important;
+}
+
+.m-container-small {
+    max-width: 60em !important;
+    margin: auto !important;
+}
+
+/*----------margin-----------------*/
+.m-margin-mini {
+    margin: 0.2em !important;
+}
+
+.m-margin-tiny {
+    margin: 0.3em !important;
+}
+
+.m-margin-tag {
+    margin: 5px !important;
+}
+
+.m-margin-large {
+    margin: 1.5em !important;
+
+}
+
+.m-margin-tb-small {
+    margin-top: 0.5em !important;
+    margin-bottom: 0.5em !important;
+}
+
+.m-margin-tb-large {
+    margin-top: 2em !important;
+    margin-bottom: 2em !important;
+}
+
+.m-margin-bottom-small {
+    margin-bottom: 0.4em !important;
+}
+
+/*----------padding-------------*/
+.m-padded-mini {
+    padding: 0.2em !important;
+}
+
+.m-padded-tiny {
+    padding: 0.3em !important;
+}
+
+.m-padded-large {
+    padding: 1.5em !important;
+
+}
+
+.m-padded-tb-mini {
+    padding-top: 0.2em !important;
+    padding-bottom: 0.2em !important;
+}
+
+.m-padded-tb-tiny {
+    padding-top: 0.3em !important;
+    padding-bottom: 0.3em !important;
+}
+
+.m-padded-tb-small {
+    padding-top: 0.5em !important;
+    padding-bottom: 0.5em !important;
+}
+
+.m-padded-tb {
+    padding-top: 1em !important;
+    padding-bottom: 1em !important;
+}
+
+.m-padded-lr-responsive {
+    padding-left: 4em !important;
+    padding-right: 4em !important;
+}
+
+.m-padded-tb-large {
+    padding-top: 2em !important;
+    padding-bottom: 2em !important;
+}
+
+.m-secondary-box-big {
+    margin-left: 3em !important;
+    margin-right: 3em !important;
+}
+
+.m-secondary-box-huge {
+    margin-left: 4em !important;
+    margin-right: 4em !important;
+}
+
+.m-padded-tb-massive {
+    padding-top: 5em !important;
+    padding-bottom: 5em !important;
+}
+
+.m-secondary-box {
+    margin-left: -10em !important;
+    margin-right: -10em !important;
+}
+
+/*-----------text------------*/
+
+.m-text {
+    font-weight: 300 !important;
+    letter-spacing: 1px !important;
+    line-height: 1.8 !important;
+}
+
+.m-text-thin {
+    font-weight: lighter !important;
+    font-family: -apple-system, "Meiryo UI", "Microsoft YaHei", "Malgun Gothic", "Segoe UI", "Trebuchet MS", Helvetica, "Monaco", monospace, Tahoma, STXihei, "华文细黑", STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, "宋体", Heiti, "黑体", sans-serif;
+}
+
+.m-text-spaced {
+    letter-spacing: 1px !important;
+}
+
+.m-text-lined {
+    line-height: 1.8;
+}
+
+.m-opacity-mini {
+    opacity: 0.8 !important;
+}
+
+/*-----------display----------*/
+.m-inline-block {
+    display: inline-block !important;
+}
+
+/*-------------color------------*/
+.m-black {
+    color: #333333 !important;
+}
+
+/*-------------position--------*/
+.m-right-top {
+    position: absolute !important;
+    right: 0 !important;
+    top: 15px !important;
+}
+
+.m-fixed-right-bottom{
+    position: fixed !important;
+    z-index: 1 !important;
+    bottom: 250px !important;
+    right: 0 !important;
+}
+
+.m-fixed-left-bottom{
+    position: fixed !important;
+    z-index: 999 !important;
+    bottom: 250px !important;
+    left: 0 !important;
+}
+
+.m-fixed-left-bottom-music{
+    position: fixed !important;
+    z-index: 999 !important;
+    bottom: 320px !important;
+    left: -95px !important;
+}
+
+.m-mobile-show {
+    display: none !important;
+}
+
+@media screen and (max-width: 768px) {
+
+    .m-mobile-hide {
+        display: none !important;
+    }
+
+    .m-mobile-show {
+        display: block !important;
+    }
+
+    .m-padded-lr-responsive {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    .m-mobile-wide {
+        width: 100% !important;
+    }
+}

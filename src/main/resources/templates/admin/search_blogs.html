@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/admin/_admin_fragments :: head(~{::title})">
+    <title>博客管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/blog.css" th:href="@{/css/blog.css}" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+<body>
+<!-- 导航 -->
+<div th:replace="/admin/_admin_fragments :: nav(1)">
+    <nav class="ui inverted attached segment m-padded-tb-mini">
+        <div class="ui container">
+            <div class="ui inverted stackable secondary menu">
+                <h2 class="ui teal header item">博客后台管理</h2>
+                <a href="#" class="item m-mobile-hide"><i class="home icon"></i>博客</a>
+                <a href="#" class="item m-mobile-hide"><i class="idea icon"></i>分类</a>
+                <a href="#" class="item m-mobile-hide"><i class="tags icon"></i>标签</a>
+                <div class="right m-mobile-hide menu">
+                    <div class="ui dropdown item">
+                        <div class="text">
+                            <img src="https://picsum.photos/id/1005/100/100" alt="" class="ui avatar image">
+                            MemoForward
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="ui menu">
+                            <a href="#" class="item">注销</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="ui attached pointing menu">
+        <div class="ui container">
+            <div class="right menu">
+                <a href="#" class="item">发布</a>
+                <a href="#" class="brown active item">列表</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end 导航 -->
+
+<!-- 正文内容 -->
+<div class="m-container m-padded-tb-large">
+    <div class="ui container">
+        <form class="ui segment form" name="search" id="search" method="post" action="/admin/searchBlog">
+            <div class="inline center aligned fields">
+                <div class="eight wide field m-margin-bottom-small">
+                    <label>Title</label>
+                    <input type="text" name="title" th:value="${title}" placeholder="标题">
+                </div>
+                <div class="four wide field m-margin-bottom-small">
+                    <label>类别</label>
+                    <div class="ui search selection dropdown">
+                        <input type="hidden" name="typeId" th:value="${typeId}">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">请选择</div>
+                        <div class="menu">
+                            <div class="item" data-value="-1">全部</div>
+                            <div class="item" th:each="type: ${typeList}"
+                                 th:data-value="${type.id}" th:text="${type.name}"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="two wide field m-margin-bottom-small">
+                    <div class="ui checkbox">
+                        <input type="checkbox" th:checked="${recommended != null}" name="recommended">
+                        <label>推荐</label>
+                    </div>
+                </div>
+                <div class="two wide field m-margin-bottom-small">
+                    <button class="ui teal button" type="submit">
+                        <i class="ui search icon"></i>搜索
+                    </button>
+                </div>
+                <input type="hidden" id="pageNum" name="pageNum">
+            </div>
+            <div class="ui mini error message"></div>
+        </form>
+
+        <div class="ui large negative message" th:unless="${error == null}" th:text="${error}"></div>
+        <table class="ui red celled center aligned table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>标题</th>
+                <th>分类</th>
+                <th>推荐</th>
+                <th>更新时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:unless="${blogPage.totalNums != 0}">
+                <th colspan="6">
+                    <div class="ui large negative message">没有找到任何文章！</div>
+                </th>
+            </tr>
+            <tr th:each="blogDto, iterStat: ${blogPage.data}">
+                <td th:text="${iterStat.count}"></td>
+                <td th:text="${blogDto.blog.title}"></td>
+                <td th:text="${blogDto.type.name}"></td>
+                <td th:text="${blogDto.blog.isRecommended == 'on'} ? '是':'否'"></td>
+                <td th:text="${#dates.format(blogDto.blog.modifiedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                <td>
+                    <a href="#" th:href="@{'/admin/'+${blogDto.blog.id}+'/editBlog'}"
+                       class="ui basic mini green button">编辑</a>
+                    <a href="#" th:onclick="|deleteBlog(${blogDto.blog.id})|"
+                       class="ui basic mini red button">删除</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th colspan="5">
+                    <div class="ui pagination stackable menu">
+                        <a class="item" th:if="${blogPage.currentPage != 1}"
+                           href="#" th:onclick="|addPage(1)|">
+                            首页
+                        </a>
+                        <div class="active grey item" th:if="${blogPage.currentPage == 1}">首页</div>
+                        <a class="item" th:unless="${blogPage.currentPage == 1}"
+                           href="#" th:onclick="|addPage(${blogPage.currentPage - 1})|">
+                            上一页
+                        </a>
+                        <a class="item">
+                            第<h5 class="ui orange header m-inline-block m-text-thin"
+                                 th:text="${blogPage.currentPage}"></h5>页
+                        </a>
+                        <a class="item" th:if="${blogPage.currentPage != blogPage.totalPage}"
+                           href="#" th:onclick="|addPage(${blogPage.currentPage + 1})|">
+                            下一页
+                        </a>
+                        <a class="item" th:if="${blogPage.currentPage != blogPage.totalPage}"
+                           href="#" th:onclick="|addPage(${blogPage.totalPage})|">
+                            尾页
+                        </a>
+                        <div class="active grey item" th:if="${blogPage.currentPage == blogPage.totalPage}">尾页</div>
+                        <div class="item">
+                            共<h5 class="ui red header m-inline-block m-text-thin"
+                                 th:text="${blogPage.totalPage}"></h5>页
+                        </div>
+                        <div class="item">
+                            共<h5 class="ui red header m-inline-block m-text-thin"
+                                 th:text="${blogPage.totalNums}"></h5>篇
+                        </div>
+                        <div name="page" class="right item">
+                            <div class="ui right labeled action input">
+                                <input type="text" id="inputPageNum" placeholder="页码..." style="width: 80px;">
+                                <button class="ui teal basic icon button" th:onclick="|_addPage()|">Go</button>
+                            </div>
+                        </div>
+                    </div>
+                </th>
+                <th colspan="1">
+                    <a th:href="@{/admin/publish}" class="ui teal button">新增</a>
+                </th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<!-- end 正文内容 -->
+
+<!-- 底部 -->
+<footer th:replace="/admin/_admin_fragments :: footer" class="ui inverted segment m-padded-tb-large"
+        style="margin: 0px">
+    <div class="ui center aligned container">
+        <div class="ui inverted stackable divided grid">
+            <div class="two wide column">
+                <div class="item">
+                    <img src="../../static/images/xuenai.png" class="ui centered rounded image" style="width: 11em">
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">最新博客</h4>
+                <div class="ui inverted vertical link list m-text-thin m-text-spaced m-opacity-mini">
+                    <a href="#" class="item">用户故事</a>
+                    <a href="#" class="item">用户故事</a>
+                    <a href="#" class="item">用户故事</a>
+                </div>
+            </div>
+            <div class="four wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">联系我</h4>
+                <div class="ui inverted vertical link list m-text-thin m-text-spaced m-opacity-mini">
+                    <p class="item"><i class="envelope icon"></i> chenxingyu@bupt.edu.cn</p>
+                    <p class="item"><i class="qq icon"></i> 328515942</p>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">个性签名</h4>
+                <p class="m-text-thin m-text-spaced m-opacity-mini">孤高所以至高，所谓真正的英雄就是一个人。因为孤高所以强大。
+                    没有持有羁绊也就是说没有必须守护的东西。必需守护的东西换言之就是弱点。
+                    就是因为有弱点才会失败。因此没有弱点，没有必须守护的东西，和别人没有联系的人才是最强的...</p>
+            </div>
+        </div>
+
+        <div class="ui inverted section divider"></div>
+        <p class="item m-text-thin m-text-spaced m-opacity-mini">大老师Copyright@没有期待就没有失望 没有羁绊就不会受伤</p>
+    </div>
+</footer>
+
+
+<script>
+    $(".ui.dropdown").dropdown();
+
+    // 传递表单页码信息
+    function _addPage() {
+        var pageNum = $("#inputPageNum").val();
+        addPage(pageNum);
+    }
+
+    function addPage(pageNum) {
+        debugger;
+        $('#pageNum').val(pageNum);
+        $('#search').submit();
+    }
+
+    // 搜索表单验证
+    $(".ui.form").form({
+        fields: {
+            title: {
+                identifier: 'title',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '标题不能为空'
+                    }
+                ]
+            }
+        }
+    });
+
+    // 删除表单操作
+    function deleteBlog(id) {
+        var confirmed = confirm('确认删除？');
+        if(!confirmed) return;
+        $.ajax({
+            url: '/admin/'+id+'/deleteBlog',
+            success: function () {
+                $("#search").submit();
+            }
+        });
+    }
+</script>
+</body>
+</html>

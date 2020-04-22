@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments :: head(~{::title})">
+    <title>归档</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/blog.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+<body>
+<!-- 导航 -->
+<nav th:replace="_fragments :: nav(4)" class="ui inverted attached segment m-padded-tb-mini">
+    <div class="ui container">
+        <div class="ui inverted stackable secondary menu">
+            <h2 class="ui teal header item">MemoForward</h2>
+            <a href="#" class="item m-mobile-hide"><i class="home icon"></i>首页</a>
+            <a href="#" class="item m-mobile-hide"><i class="idea icon"></i>分类</a>
+            <a href="#" class="acitve item m-mobile-hide"><i class="tags icon"></i>标签</a>
+            <a href="#" class="item m-mobile-hide"><i class="info icon"></i>归档</a>
+            <a href="#" class="item m-mobile-hide"><i class="info icon"></i>关于我</a>
+            <div class="right menu m-mobile-hide">
+                <div class="item">
+                    <div class="ui icon inverted transparent input">
+                        <input type="text" placeholder="search....">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui left pointing dropdown button icon m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+        <div class="ui black menu">
+            <div class="ui left search icon input">
+                <i class="search icon"></i>
+                <input type="text" name="search" placeholder="search issues...">
+            </div>
+            <div class="divider"></div>
+            <h4 class="ui teal header"><i class="tags icon"></i>为您导航</h4>
+            <div class="divider"></div>
+            <a href="#" class="item"><i class="home icon"></i>首页</a>
+            <a href="#" class="item"><i class="idea icon"></i>分类</a>
+            <a href="#" class="item"><i class="tags icon"></i>标签</a>
+            <a href="#" class="item"><i class="info icon"></i>归档</a>
+            <a href="#" class="item"><i class="info icon"></i>关于我</a>
+        </div>
+    </div>
+</nav>
+<!-- end 导航 -->
+
+<!-- 正文内容 -->
+<div class="m-container m-padded-tb-large">
+    <div class="ui container">
+        <!-- header -->
+        <div class="ui attached segment">
+            <div class="ui middle aligned two column grid">
+                <div class="column">
+                    <h3 class="ui teal header">归档</h3>
+                </div>
+                <div class="right aligned column">
+                    共 <h2 class="ui orange header m-inline-block m-text-thin">114</h2>篇
+                </div>
+            </div>
+        </div>
+        <!-- end header -->
+
+        <!-- content -->
+        <div class="ui red segment">
+            <h2 class="ui center aligned header">2017</h2>
+            <div class="ui fluid vertical menu m-text">
+                <a href="#" target="_blank" class="item">
+                <span>
+                    <i class="mini ui circle icon"></i>&nbsp;&nbsp;大老师经典语录
+                    <div class="ui teal basic left pointing label m-padded-tiny">11月3日</div>
+                </span>
+                    <div class="ui basic orange label m-padded-tiny">原创</div>
+                </a>
+            </div>
+        </div>
+        <!-- end content -->
+        <!-- bottom -->
+        <div class="ui attached bottom segment">
+            <div class="ui middle aligned two column grid">
+                <div class="column">
+                    <a href="#" class="ui mini teal basic button">上一页</a>
+                </div>
+                <div class="right aligned column">
+                    <a href="#" class="ui right aligned mini teal basic button">下一页</a>
+                </div>
+            </div>
+        </div>
+        <!-- end bottom -->
+    </div>
+</div>
+
+<!-- end 正文内容 -->
+
+<!-- 底部 -->
+<footer th:replace="_fragments :: footer" class="ui inverted segment m-padded-tb-large" style="margin: 0px">
+    <div class="ui center aligned container">
+        <div class="ui inverted stackable divided grid">
+            <div class="two wide column">
+                <div class="item">
+                    <img src="../static/images/xuenai.png" class="ui centered rounded image" style="width: 11em">
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">最新博客</h4>
+                <div class="ui inverted vertical link list m-text-thin m-text-spaced m-opacity-mini">
+                    <a href="#" class="item">用户故事</a>
+                    <a href="#" class="item">用户故事</a>
+                    <a href="#" class="item">用户故事</a>
+                </div>
+            </div>
+            <div class="four wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">联系我</h4>
+                <div class="ui inverted vertical link list m-text-thin m-text-spaced m-opacity-mini">
+                    <p class="item"><i class="envelope icon"></i> chenxingyu@bupt.edu.cn</p>
+                    <p class="item"><i class="qq icon"></i> 328515942</p>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">个性签名</h4>
+                <p class="m-text-thin m-text-spaced m-opacity-mini">孤高所以至高，所谓真正的英雄就是一个人。因为孤高所以强大。
+                    没有持有羁绊也就是说没有必须守护的东西。必需守护的东西换言之就是弱点。
+                    就是因为有弱点才会失败。因此没有弱点，没有必须守护的东西，和别人没有联系的人才是最强的...</p>
+            </div>
+        </div>
+
+        <div class="ui inverted section divider"></div>
+        <p class="item m-text-thin m-text-spaced m-opacity-mini">大老师Copyright@没有期待就没有失望 没有羁绊就不会受伤</p>
+    </div>
+</footer>
+
+
+<script>
+    $(".ui.dropdown").dropdown("show");
+</script>
+</body>
+</html>

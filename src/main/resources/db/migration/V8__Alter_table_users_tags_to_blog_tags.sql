@@ -1,0 +1,1 @@
+ALTER TABLE t_user_tags RENAME TO t_blog_tags;

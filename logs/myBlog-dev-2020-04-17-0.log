@@ -1,0 +1,125 @@
+2020-04-17 18:33:14.726  INFO 3403 --- [restartedMain] com.memoforward.blog.BlogApplication     : Starting BlogApplication on MemoForwards-MBP.local with PID 3403 (/Users/memoforward/Documents/Project/Java/Blog with Spring Boot/blog/target/classes started by memoforward in /Users/memoforward/Documents/Project/Java/Blog with Spring Boot/blog)
+2020-04-17 18:33:14.730 DEBUG 3403 --- [restartedMain] com.memoforward.blog.BlogApplication     : Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-04-17 18:33:14.730  INFO 3403 --- [restartedMain] com.memoforward.blog.BlogApplication     : The following profiles are active: dev
+2020-04-17 18:33:16.949  INFO 3403 --- [restartedMain] com.memoforward.blog.BlogApplication     : Started BlogApplication in 2.672 seconds (JVM running for 3.243)
+2020-04-17 18:33:31.937 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.UserMapper.selectByExample  : ==>  Preparing: select id, nickname, username, password, type, avatar, create_time, modified_time, email from t_user WHERE ( username = ? ) 
+2020-04-17 18:33:31.956 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.UserMapper.selectByExample  : ==> Parameters: MemoForward(String)
+2020-04-17 18:33:31.993 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-17 18:33:32.014  INFO 3403 --- [http-nio-8888-exec-1] com.memoforward.blog.aspect.LogAspect    : Request: RequestLog{url='http://localhost:8888/', ip='0:0:0:0:0:0:0:1', classMethod='com.memoforward.blog.controller.IndexController.index', args=[1, {}]}
+2020-04-17 18:33:32.021 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.BlogMapper.countByExample   : ==>  Preparing: select count(*) from t_blog 
+2020-04-17 18:33:32.021 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.BlogMapper.countByExample   : ==> Parameters: 
+2020-04-17 18:33:32.027 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.BlogMapper.countByExample   : <==      Total: 1
+2020-04-17 18:33:32.029 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.B.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, pic_url, mark, view_count, show_appreciation, show_comment, show_statement, is_published, create_time, modified_time, type_id, user_id, is_recommended, tag_ids, description from t_blog WHERE ( is_published = ? ) order by modified_time desc 
+2020-04-17 18:33:32.030 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.B.selectByExampleWithRowbounds   : ==> Parameters: on(String)
+2020-04-17 18:33:32.035 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.B.selectByExampleWithRowbounds   : <==      Total: 4
+2020-04-17 18:33:32.035 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==>  Preparing: select id, name from t_type where id = ? 
+2020-04-17 18:33:32.036 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==> Parameters: 2(Long)
+2020-04-17 18:33:32.039 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.TypeMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:33:32.039 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, nickname, username, password, type, avatar, create_time, modified_time, email from t_user where id = ? 
+2020-04-17 18:33:32.039 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 9(Long)
+2020-04-17 18:33:32.040 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:33:32.041 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TagExtMapper.listBlogTags   : ==>  Preparing: SELECT t.id, t.name from t_tag t inner join t_blog_tags s on t.id = s.tag_id and s.blog_id = ?; 
+2020-04-17 18:33:32.042 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TagExtMapper.listBlogTags   : ==> Parameters: 25(Long)
+2020-04-17 18:33:32.047 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TagExtMapper.listBlogTags   : <==      Total: 3
+2020-04-17 18:33:32.048 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==>  Preparing: select id, name from t_type where id = ? 
+2020-04-17 18:33:32.048 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==> Parameters: 2(Long)
+2020-04-17 18:33:32.049 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.TypeMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:33:32.049 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, nickname, username, password, type, avatar, create_time, modified_time, email from t_user where id = ? 
+2020-04-17 18:33:32.050 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 9(Long)
+2020-04-17 18:33:32.051 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:33:32.052 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TagExtMapper.listBlogTags   : ==>  Preparing: SELECT t.id, t.name from t_tag t inner join t_blog_tags s on t.id = s.tag_id and s.blog_id = ?; 
+2020-04-17 18:33:32.052 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TagExtMapper.listBlogTags   : ==> Parameters: 24(Long)
+2020-04-17 18:33:32.053 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TagExtMapper.listBlogTags   : <==      Total: 2
+2020-04-17 18:33:32.054 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==>  Preparing: select id, name from t_type where id = ? 
+2020-04-17 18:33:32.054 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==> Parameters: 2(Long)
+2020-04-17 18:33:32.055 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.TypeMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:33:32.055 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, nickname, username, password, type, avatar, create_time, modified_time, email from t_user where id = ? 
+2020-04-17 18:33:32.055 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 9(Long)
+2020-04-17 18:33:32.057 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:33:32.057 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TagExtMapper.listBlogTags   : ==>  Preparing: SELECT t.id, t.name from t_tag t inner join t_blog_tags s on t.id = s.tag_id and s.blog_id = ?; 
+2020-04-17 18:33:32.057 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TagExtMapper.listBlogTags   : ==> Parameters: 23(Long)
+2020-04-17 18:33:32.058 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TagExtMapper.listBlogTags   : <==      Total: 2
+2020-04-17 18:33:32.059 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==>  Preparing: select id, name from t_type where id = ? 
+2020-04-17 18:33:32.059 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==> Parameters: 13(Long)
+2020-04-17 18:33:32.060 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.TypeMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:33:32.060 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, nickname, username, password, type, avatar, create_time, modified_time, email from t_user where id = ? 
+2020-04-17 18:33:32.060 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 9(Long)
+2020-04-17 18:33:32.062 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:33:32.063 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TagExtMapper.listBlogTags   : ==>  Preparing: SELECT t.id, t.name from t_tag t inner join t_blog_tags s on t.id = s.tag_id and s.blog_id = ?; 
+2020-04-17 18:33:32.063 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TagExtMapper.listBlogTags   : ==> Parameters: 22(Long)
+2020-04-17 18:33:32.064 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TagExtMapper.listBlogTags   : <==      Total: 3
+2020-04-17 18:33:32.065 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TypeExtMapper.listTopTypes  : ==>  Preparing: SELECT count(*) as count, t.name as name from t_type t INNER JOIN t_blog_type s on t.id = s.type_id GROUP BY s.type_id ORDER BY count(*) desc limit ? offset 0; 
+2020-04-17 18:33:32.066 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TypeExtMapper.listTopTypes  : ==> Parameters: 6(Integer)
+2020-04-17 18:33:32.071 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TypeExtMapper.listTopTypes  : <==      Total: 2
+2020-04-17 18:33:32.073 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TagExtMapper.listTopTags    : ==>  Preparing: SELECT count(*) as count, t.name as name from t_tag t INNER JOIN t_blog_tags s on t.id = s.tag_id GROUP BY s.tag_id ORDER BY count(*) desc limit ? offset 0; 
+2020-04-17 18:33:32.073 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TagExtMapper.listTopTags    : ==> Parameters: 10(Integer)
+2020-04-17 18:33:32.075 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.mapper.TagExtMapper.listTopTags    : <==      Total: 4
+2020-04-17 18:33:32.075 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.B.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, pic_url, mark, view_count, show_appreciation, show_comment, show_statement, is_published, create_time, modified_time, type_id, user_id, is_recommended, tag_ids, description from t_blog order by view_count desc 
+2020-04-17 18:33:32.076 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.B.selectByExampleWithRowbounds   : ==> Parameters: 
+2020-04-17 18:33:32.078 DEBUG 3403 --- [http-nio-8888-exec-1] c.m.b.m.B.selectByExampleWithRowbounds   : <==      Total: 4
+2020-04-17 18:33:50.574  INFO 3403 --- [http-nio-8888-exec-7] com.memoforward.blog.aspect.LogAspect    : Request: RequestLog{url='http://localhost:8888/user/logout;jsessionid=6DB865C3C875DC99A6706FB4BB496422', ip='0:0:0:0:0:0:0:1', classMethod='com.memoforward.blog.controller.LoginController.logout', args=[org.apache.catalina.connector.RequestFacade@67c08061, org.apache.catalina.connector.ResponseFacade@48815851]}
+2020-04-17 18:33:50.596  INFO 3403 --- [http-nio-8888-exec-6] com.memoforward.blog.aspect.LogAspect    : Request: RequestLog{url='http://localhost:8888/', ip='0:0:0:0:0:0:0:1', classMethod='com.memoforward.blog.controller.IndexController.index', args=[1, {}]}
+2020-04-17 18:33:50.598 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.BlogMapper.countByExample   : ==>  Preparing: select count(*) from t_blog 
+2020-04-17 18:33:50.598 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.BlogMapper.countByExample   : ==> Parameters: 
+2020-04-17 18:33:50.599 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.BlogMapper.countByExample   : <==      Total: 1
+2020-04-17 18:33:50.600 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.B.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, pic_url, mark, view_count, show_appreciation, show_comment, show_statement, is_published, create_time, modified_time, type_id, user_id, is_recommended, tag_ids, description from t_blog WHERE ( is_published = ? ) order by modified_time desc 
+2020-04-17 18:33:50.601 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.B.selectByExampleWithRowbounds   : ==> Parameters: on(String)
+2020-04-17 18:33:50.603 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.B.selectByExampleWithRowbounds   : <==      Total: 4
+2020-04-17 18:33:50.604 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==>  Preparing: select id, name from t_type where id = ? 
+2020-04-17 18:33:50.604 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==> Parameters: 2(Long)
+2020-04-17 18:33:50.605 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.TypeMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:33:50.605 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, nickname, username, password, type, avatar, create_time, modified_time, email from t_user where id = ? 
+2020-04-17 18:33:50.606 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 9(Long)
+2020-04-17 18:33:50.606 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:33:50.607 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TagExtMapper.listBlogTags   : ==>  Preparing: SELECT t.id, t.name from t_tag t inner join t_blog_tags s on t.id = s.tag_id and s.blog_id = ?; 
+2020-04-17 18:33:50.607 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TagExtMapper.listBlogTags   : ==> Parameters: 25(Long)
+2020-04-17 18:33:50.608 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TagExtMapper.listBlogTags   : <==      Total: 3
+2020-04-17 18:33:50.608 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==>  Preparing: select id, name from t_type where id = ? 
+2020-04-17 18:33:50.609 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==> Parameters: 2(Long)
+2020-04-17 18:33:50.610 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.TypeMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:33:50.611 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, nickname, username, password, type, avatar, create_time, modified_time, email from t_user where id = ? 
+2020-04-17 18:33:50.612 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 9(Long)
+2020-04-17 18:33:50.613 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:33:50.613 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TagExtMapper.listBlogTags   : ==>  Preparing: SELECT t.id, t.name from t_tag t inner join t_blog_tags s on t.id = s.tag_id and s.blog_id = ?; 
+2020-04-17 18:33:50.614 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TagExtMapper.listBlogTags   : ==> Parameters: 24(Long)
+2020-04-17 18:33:50.615 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TagExtMapper.listBlogTags   : <==      Total: 2
+2020-04-17 18:33:50.615 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==>  Preparing: select id, name from t_type where id = ? 
+2020-04-17 18:33:50.615 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==> Parameters: 2(Long)
+2020-04-17 18:33:50.616 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.TypeMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:33:50.616 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, nickname, username, password, type, avatar, create_time, modified_time, email from t_user where id = ? 
+2020-04-17 18:33:50.616 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 9(Long)
+2020-04-17 18:33:50.617 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:33:50.617 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TagExtMapper.listBlogTags   : ==>  Preparing: SELECT t.id, t.name from t_tag t inner join t_blog_tags s on t.id = s.tag_id and s.blog_id = ?; 
+2020-04-17 18:33:50.617 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TagExtMapper.listBlogTags   : ==> Parameters: 23(Long)
+2020-04-17 18:33:50.619 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TagExtMapper.listBlogTags   : <==      Total: 2
+2020-04-17 18:33:50.619 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==>  Preparing: select id, name from t_type where id = ? 
+2020-04-17 18:33:50.619 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==> Parameters: 13(Long)
+2020-04-17 18:33:50.620 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.TypeMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:33:50.620 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, nickname, username, password, type, avatar, create_time, modified_time, email from t_user where id = ? 
+2020-04-17 18:33:50.620 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 9(Long)
+2020-04-17 18:33:50.621 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:33:50.622 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TagExtMapper.listBlogTags   : ==>  Preparing: SELECT t.id, t.name from t_tag t inner join t_blog_tags s on t.id = s.tag_id and s.blog_id = ?; 
+2020-04-17 18:33:50.622 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TagExtMapper.listBlogTags   : ==> Parameters: 22(Long)
+2020-04-17 18:33:50.623 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TagExtMapper.listBlogTags   : <==      Total: 3
+2020-04-17 18:33:50.624 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TypeExtMapper.listTopTypes  : ==>  Preparing: SELECT count(*) as count, t.name as name from t_type t INNER JOIN t_blog_type s on t.id = s.type_id GROUP BY s.type_id ORDER BY count(*) desc limit ? offset 0; 
+2020-04-17 18:33:50.624 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TypeExtMapper.listTopTypes  : ==> Parameters: 6(Integer)
+2020-04-17 18:33:50.625 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TypeExtMapper.listTopTypes  : <==      Total: 2
+2020-04-17 18:33:50.626 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TagExtMapper.listTopTags    : ==>  Preparing: SELECT count(*) as count, t.name as name from t_tag t INNER JOIN t_blog_tags s on t.id = s.tag_id GROUP BY s.tag_id ORDER BY count(*) desc limit ? offset 0; 
+2020-04-17 18:33:50.626 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TagExtMapper.listTopTags    : ==> Parameters: 10(Integer)
+2020-04-17 18:33:50.627 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.mapper.TagExtMapper.listTopTags    : <==      Total: 4
+2020-04-17 18:33:50.628 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.B.selectByExampleWithRowbounds   : ==>  Preparing: select id, title, pic_url, mark, view_count, show_appreciation, show_comment, show_statement, is_published, create_time, modified_time, type_id, user_id, is_recommended, tag_ids, description from t_blog order by view_count desc 
+2020-04-17 18:33:50.628 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.B.selectByExampleWithRowbounds   : ==> Parameters: 
+2020-04-17 18:33:50.631 DEBUG 3403 --- [http-nio-8888-exec-6] c.m.b.m.B.selectByExampleWithRowbounds   : <==      Total: 4
+2020-04-17 18:34:35.988  INFO 3403 --- [http-nio-8888-exec-9] com.memoforward.blog.aspect.LogAspect    : Request: RequestLog{url='http://localhost:8888/25/blog', ip='0:0:0:0:0:0:0:1', classMethod='com.memoforward.blog.controller.BlogController.blog', args=[25, {}]}
+2020-04-17 18:34:36.000 DEBUG 3403 --- [http-nio-8888-exec-9] c.m.b.m.BlogMapper.selectByPrimaryKey    : ==>  Preparing: select id, title, pic_url, mark, view_count, show_appreciation, show_comment, show_statement, is_published, create_time, modified_time, type_id, user_id, is_recommended, tag_ids, description , content from t_blog where id = ? 
+2020-04-17 18:34:36.000 DEBUG 3403 --- [http-nio-8888-exec-9] c.m.b.m.BlogMapper.selectByPrimaryKey    : ==> Parameters: 25(Long)
+2020-04-17 18:34:36.003 DEBUG 3403 --- [http-nio-8888-exec-9] c.m.b.m.BlogMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:34:36.004 DEBUG 3403 --- [http-nio-8888-exec-9] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==>  Preparing: select id, name from t_type where id = ? 
+2020-04-17 18:34:36.005 DEBUG 3403 --- [http-nio-8888-exec-9] c.m.b.m.TypeMapper.selectByPrimaryKey    : ==> Parameters: 2(Long)
+2020-04-17 18:34:36.006 DEBUG 3403 --- [http-nio-8888-exec-9] c.m.b.m.TypeMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:34:36.006 DEBUG 3403 --- [http-nio-8888-exec-9] c.m.b.m.UserMapper.selectByPrimaryKey    : ==>  Preparing: select id, nickname, username, password, type, avatar, create_time, modified_time, email from t_user where id = ? 
+2020-04-17 18:34:36.007 DEBUG 3403 --- [http-nio-8888-exec-9] c.m.b.m.UserMapper.selectByPrimaryKey    : ==> Parameters: 9(Long)
+2020-04-17 18:34:36.008 DEBUG 3403 --- [http-nio-8888-exec-9] c.m.b.m.UserMapper.selectByPrimaryKey    : <==      Total: 1
+2020-04-17 18:34:36.009 DEBUG 3403 --- [http-nio-8888-exec-9] c.m.b.mapper.TagExtMapper.listBlogTags   : ==>  Preparing: SELECT t.id, t.name from t_tag t inner join t_blog_tags s on t.id = s.tag_id and s.blog_id = ?; 
+2020-04-17 18:34:36.009 DEBUG 3403 --- [http-nio-8888-exec-9] c.m.b.mapper.TagExtMapper.listBlogTags   : ==> Parameters: 25(Long)
+2020-04-17 18:34:36.010 DEBUG 3403 --- [http-nio-8888-exec-9] c.m.b.mapper.TagExtMapper.listBlogTags   : <==      Total: 3

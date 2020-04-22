@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/admin/_admin_fragments :: head(~{::title})">
+    <title>分类管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/blog.css" th:href="@{/css/blog.css}" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+<body>
+<!-- 导航 -->
+<div th:replace="/admin/_admin_fragments :: nav(2)">
+    <nav class="ui inverted attached segment m-padded-tb-mini">
+        <div class="ui container">
+            <div class="ui inverted stackable secondary menu">
+                <h2 class="ui teal header item">博客后台管理</h2>
+                <a href="#" class="item m-mobile-hide"><i class="home icon"></i>博客</a>
+                <a href="#" class="active item m-mobile-hide"><i class="idea icon"></i>分类</a>
+                <a href="#" class="item m-mobile-hide"><i class="tags icon"></i>标签</a>
+                <div class="right m-mobile-hide menu">
+                    <div class="ui dropdown item">
+                        <div class="text">
+                            <img src="https://picsum.photos/id/1005/100/100" alt="" class="ui avatar image">
+                            MemoForward
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="ui menu">
+                            <a href="#" class="item">注销</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="ui attached pointing menu">
+        <div class="ui container">
+            <div class="right menu">
+                <a href="#" class="item">发布</a>
+                <a href="#" class="brown active item">列表</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end 导航 -->
+
+<!-- 正文内容 -->
+<div class="m-container m-padded-tb-large">
+    <div class="ui container">
+        <table class="ui purple celled center aligned table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>分类名称</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="type, iterStat: ${typePage.data}">
+                <td th:text="${iterStat.count}"></td>
+                <td th:text="${type.name}"></td>
+                <td>
+                    <!--                    <a href="#" class="ui basic mini green button">编辑</a>-->
+                    <a href="#" th:href="@{/admin/deleteType(typeId=${type.id},pageNum=${typePage.currentPage})}"
+                       onclick="return confirm('确定删除吗？')" class="ui basic mini red button">删除</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th colspan="2">
+                    <!--                    <a href="#" class="ui mini teal basic button">上一页</a>-->
+                    <!--                    <a href="#" class="ui mini teal basic button">下一页</a>-->
+                    <div class="ui mini pagination stackable menu">
+                        <a class="item" th:if="${typePage.currentPage != 1}"
+                           href="#" th:href="@{/admin/types(pageNum=1)}">
+                            首页
+                        </a>
+                        <div class="active grey item" th:if="${typePage.currentPage == 1}">首页</div>
+                        <a class="item" th:unless="${typePage.currentPage == 1}"
+                           href="#" th:href="@{/admin/types(pageNum=(${typePage.currentPage}-1))}">
+                            上一页
+                        </a>
+                        <a class="item">
+                            第<h5 class="ui orange header m-inline-block m-text-thin"
+                                 th:text="${typePage.currentPage}"></h5>页
+                        </a>
+                        <a class="item" th:if="${typePage.currentPage != typePage.totalPage}"
+                           href="#" th:href="@{/admin/types(pageNum=(${typePage.currentPage}+1))}">
+                            下一页
+                        </a>
+                        <a class="item" th:if="${typePage.currentPage != typePage.totalPage}"
+                           href="#" th:href="@{/admin/types(pageNum=${typePage.totalPage})}">
+                            尾页
+                        </a>
+                        <div class="active grey item" th:if="${typePage.currentPage == typePage.totalPage}">尾页</div>
+                        <div class="item">
+                            共<h5 class="ui red header m-inline-block m-text-thin"
+                                 th:text="${typePage.totalPage}"></h5>页
+                        </div>
+                        <div class="item">
+                            共<h5 class="ui red header m-inline-block m-text-thin"
+                                 th:text="${typePage.totalNums}"></h5>个
+                        </div>
+                        <form name="page" class="right item" action="/admin/types" method="get">
+                            <div class="ui right labeled action input">
+                                <input type="text" name="pageNum" placeholder="页码..." style="width: 80px;">
+                                <button class="ui teal basic icon button submit">Go</button>
+                            </div>
+                        </form>
+                    </div>
+                </th>
+                <th colspan="1">
+                    <form id="addTypeForm" action="/admin/addNewType" method="get" class="ui form">
+                        <div class="ui inline right aligned field required">
+                            <div class="ui m-padded-tb-small mini negative compact message"
+                                 th:unless="${eMessage} == null" th:text="${eMessage}">添加新标签
+                            </div>
+                            <div class="ui m-padded-tb-small mini success compact message"
+                                 th:unless="${sMessage} == null" th:text="${sMessage}">添加新标签
+                            </div>
+                            <div class="ui mini left icon input">
+                                <input type="text" id="newType" name="newType" placeholder="输入新标签">
+                                <i class="idea icon"></i>
+                            </div>
+                            <button class="ui mini teal button submit">新增</button>
+                        </div>
+                    </form>
+                </th>
+            </tr>
+            </tfoot>
+        </table>
+
+    </div>
+</div>
+
+<!-- end 正文内容 -->
+
+<!-- 底部 -->
+<footer th:replace="/admin/_admin_fragments :: footer" class="ui inverted segment m-padded-tb-large"
+        style="margin: 0px">
+    <div class="ui center aligned container">
+        <div class="ui inverted stackable divided grid">
+            <div class="two wide column">
+                <div class="item">
+                    <img src="../../static/images/xuenai.png" class="ui centered rounded image" style="width: 11em">
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">最新博客</h4>
+                <div class="ui inverted vertical link list m-text-thin m-text-spaced m-opacity-mini">
+                    <a href="#" class="item">用户故事</a>
+                    <a href="#" class="item">用户故事</a>
+                    <a href="#" class="item">用户故事</a>
+                </div>
+            </div>
+            <div class="four wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">联系我</h4>
+                <div class="ui inverted vertical link list m-text-thin m-text-spaced m-opacity-mini">
+                    <p class="item"><i class="envelope icon"></i> chenxingyu@bupt.edu.cn</p>
+                    <p class="item"><i class="qq icon"></i> 328515942</p>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">个性签名</h4>
+                <p class="m-text-thin m-text-spaced m-opacity-mini">孤高所以至高，所谓真正的英雄就是一个人。因为孤高所以强大。
+                    没有持有羁绊也就是说没有必须守护的东西。必需守护的东西换言之就是弱点。
+                    就是因为有弱点才会失败。因此没有弱点，没有必须守护的东西，和别人没有联系的人才是最强的...</p>
+            </div>
+        </div>
+
+        <div class="ui inverted section divider"></div>
+        <p class="item m-text-thin m-text-spaced m-opacity-mini">大老师Copyright@没有期待就没有失望 没有羁绊就不会受伤</p>
+    </div>
+</footer>
+
+
+<script>
+    $(".ui.dropdown").dropdown();
+
+    $(".ui.form").form({
+        fields: {
+            newType: 'empty'
+        }
+    });
+
+</script>
+</body>
+</html>
